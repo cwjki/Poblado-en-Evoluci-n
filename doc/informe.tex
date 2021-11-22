@@ -1,0 +1,265 @@
+\documentclass{article}
+\usepackage{titlesec}
+
+\titleformat{\section}[frame]{\normalfont}{\filcenter\small}{7pt}{\Large\bfseries\filcenter}
+
+\begin{document}
+    \begin{titlepage}
+        \centering
+        {\bfseries\LARGE Universidad De La Habana \par}
+        \vspace{1cm}
+        {\Large MATCOM \par}
+        \vspace{3cm}
+        {\Huge Proyecto de Simulación \par}
+        \vspace{1cm}
+        {\Large Poblado en Evolución }
+        \vfill
+        {\Large Autores: \par}
+        {\Large Juan Carlos Casteleiro Wong C411 \par}  
+        {\Large  \par}
+
+        \vfill
+    \end{titlepage}
+
+    
+
+    \tableofcontents{} 
+
+    \section{Orden del Problema Asignado}
+        \subsection{ Poblado en Evolución}
+        \paragraph{}
+            Se dese conocer la evolución de la población de una determinada región.
+            Se conoce que la probabilidad de fallecer de una persona distribuye uniforme
+            y se corresponde, según su edad y sexo, con la siguiente tabla:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c | c |}
+                \hline
+                Edad & Hombre & Mujer \\ \hline
+                0 - 12 & 0.25 & 0.25 \\ \hline
+                12 - 45  & 0.1 & 0.15 \\ \hline
+                45 - 76  & 0.3 & 0.35 \\ \hline
+                76 - 125  & 0.7 & 0.65 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            Del mismo modo, se conoce que la probabilidad de una mujer se embarace
+            es uniforme y está relacionada con la edad:
+
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Edad & Probabilidad Embarazarse \\ \hline
+                12 - 15  &  0.2 \\ \hline
+                15 - 21  &  0.45 \\ \hline
+                21 - 35  &  0.8 \\ \hline
+                35 - 45  &  0.4 \\ \hline
+                45 - 60  &  0.2 \\ \hline
+                60 - 125  &  0.05 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            \newpage
+            Para que una mujer quede embarazada debe tener pareja y no haber tenido
+            el número máximo de hijos que deseaba tener ella o su pareja en ese momento.
+            El número de hijos que cada persona desea tener distribuye uniforme según la
+            tabla siguiente:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Número & Probabilidad \\ \hline
+                1  &  0.6 \\ \hline
+                2  &  0.75 \\ \hline
+                3  &  0.35 \\ \hline
+                4  &  0.2 \\ \hline
+                5  &  0.1 \\ \hline
+                más de 5  &  0.05 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            Para que dos personas sean pareja deben estar solas en ese instante y deben
+            desear tener pareja. El desear tener pareja está relacionado con la edad:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Edad & Probabilidad Querer Pareja \\ \hline
+                12 - 15  &  0.6 \\ \hline
+                15 - 21  &  0.65 \\ \hline
+                21 - 35  &  0.8 \\ \hline
+                35 - 45  &  0.6 \\ \hline
+                45 - 60  &  0.5 \\ \hline
+                más de 5  &  0.2 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            Si dos personas de diferente sexo están solas y ambas desean querer tener
+            parejas entonces la probabilidad de volverse pareja está relacionada con la dife
+            rencia de edad:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Diferencia de Edad & Probabilidad Establecer Pareja \\ \hline
+                0 - 5  &  0.45 \\ \hline
+                5 - 10  &  0.4 \\ \hline
+                10 - 15  &  0.35 \\ \hline
+                15 - 20  &  0.25 \\ \hline
+                20 0 más  &  0.15 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            \newpage
+            Cuando dos personas están en pareja la probabilidad de que ocurra una rup-
+            tura distribuye uniforme y es de 0.2. Cuando una persona se separa, o enviuda,
+            necesita estar sola por un período de tiempo que distribuye exponencial con un
+            parámetro que está relacionado con la edad:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Edad & $ \lambda $ \\ \hline
+                12 - 15  &  3 meses \\ \hline
+                15 - 21  &  6 meses \\ \hline
+                21 - 35  &  6 meses \\ \hline
+                35 - 45  &  1 año \\ \hline
+                45 - 60  &  2 años \\ \hline
+                más de 5  &  4 años \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            Cuando están dadas todas las condiciones y una mujer queda embarazada
+            puede tener o no un embarazo múltiple y esto distribuye uniforme acorde a las
+            probabilidades siguientes:
+
+            \begin{table}[h!]
+                \begin{center}
+                \begin{tabular}{| c | c |}
+                \hline
+                Número de Bebés & Probabilidad \\ \hline
+                1  &  0.7 \\ \hline
+                2  &  0.18 \\ \hline
+                3  &  0.08 \\ \hline
+                4  &  0.04 \\ \hline
+                5  &  0.02 \\ \hline
+                \end{tabular}
+                \end{center}
+            \end{table}
+
+            La probabilidad del sexo de cada bebé nacido es uniforme 0,5.
+            Asumiendo que se tiene una población inicial de M mujeres y H hombres y
+            que cada poblador, en el instante incial, tiene una edad que distribuye uniforme
+            $(U(0,100)$. Realice un proceso de simulación para determinar como evoluciona
+            la población en un período de 100 años.
+
+
+    \newpage
+    \section{Principales Ideas}
+        \paragraph{}
+        El comportamiento de la población durante el transcurso del tiempo se simula analizando 
+        los eventos que pueden ocurrir cada mes; por lo cual el período total de 
+        estudio comprende desde el mes 0 hasta el mes 1200. Los eventos posibles son generados 
+        de forma aleatoria, teniendo en cuenta los cambios que pueden ocasionar la ocurrencia de
+        estos en la población. 
+        Por ejemplo, si una persona fallece ya no podrá participar en ningún evento que ocurra posteriormente.
+        Los posibles eventos a ocurrir serían los que se explican a continuación:
+        
+        \begin{itemize}
+            \item Fallecer: Analiza para las personas vivas en cada corte la probabilidad de que muera según su edad y sexo que son los parámetros especificados a tener en cuenta. En caso de que muera teniendo pareja, esta última entrará en un estado de espera para poder emparejarse nuevamente también definido según su edad y sexo.
+            \item Emparejarse: Selecciona entre las personas vivas, solteras y que no estén en estado de espera para emparejarse las posibles parejas teniendo en cuenta la compatibilidad por edades. (Solo se emparejan hombres con mujeres)
+            \item Desemparejarse: Selecciona entre los hombres vivos emparejados, la probabilidad de querer romper la relación. Si una relación termina los involucrados en ella entrarán en estado de espera para poder emparejarse nuevamente, del mismo modo que al quedar una persona viuda. (Como las parejas siempre tendrán un hombre se pueden recorrer solo estos abarcando todas las parejas).
+            \item Embarazarse: Selecciona entre las mujeres vivas que tienen pareja y las probabilidades de cada una según su edad, teniendo en cuenta que ningún miembro de la relación haya alcanzado el numéro máximo de hijos que desea. (Solo se embarazan mujeres emparejadas).
+            \item Dar a luz: Selecciona a las mujeres vivas, que se embarazaron 9 meses atrás. Se actualizan la cantidad de hijos para los padres (vivos), y se incluyen estos en la población en cuestión.
+            \item Envejecer: Para todas las personas vivas en cada corte se actualiza su edad aumentando un mes cada vez.
+        \end{itemize} 
+    
+        \paragraph{}
+        Por tanto, se realizan 1200 iteraciones (meses correspondientes a 100 años), ejecutando
+        en cada una primeramente el evento de envejecer a los miembros actuales de la población,
+        y generando aleatoriamente la ocurrencia del resto de los eventos mencionados; se actualiza
+        el estado de la población en consecuencia a estos.
+
+
+    \section {Modelo de Simulación de Eventos Discretos}
+        \paragraph{} 
+        Por las características del comportamiento de la población antes expuesto que implica un generador de eventos
+         cuyo orden es determinante, el modelo se basa en un sistema de atención de un único servidor.   
+    
+    \section {Consideraciones obtenidas a partir de la ejecución}
+        \paragraph{}
+        Se realizaron simulaciones con poblaciones de distintos tamaños, variando la 
+        cantidad de hombres y de mujeres.  
+        Siendo fiel a los datos que se proveen en la orientación del problema los resultados
+        obtenidos muestran una alta tasa de mortalidad. Se muestran los resultados de una simulación
+        con 10 000 hombres y 10 000 mujeres inicialmente, lo cual favorece el emparejamiento, embarazos y
+        por tanto nacimientos, y aun así se obtienen resultados desfavorecedores para el crecimiento poblacional.   
+    
+
+    \begin{table}[h!]
+        \begin{center}
+        \begin{tabular}{| c | c |}
+        \hline
+        \multicolumn{2}{ |c| }{10 000 H y 10 000 M} \\ \hline
+        Número de Meses & Población Actual \\ \hline
+        0  &  20 000 \\ \hline
+        12 (1 año) &  14 791 \\ \hline
+        60 (5 años) &  12 136 \\ \hline
+        120 (10 años) &  10 915 \\ \hline
+        300 (25 años) &  9 644 \\ \hline
+        600 (50 años) &  9 146 \\ \hline
+        960 (80 años) &  8 950 \\ \hline
+        1200 (100 años) &  8 939 \\ \hline
+        \end{tabular}
+        \end{center}
+    \end{table}
+
+    \paragraph{}
+    Para mejorar la esperanza de vida de esta población, se propone disminuir 
+    las probabilidades de muerte de los individuos. Partiendo de los datos de la orientación
+    si se interpreta la probabilidad de morir en cada rango de edad como la probabilidad total
+    de morir en todo el intervalo de tiempo que comprende dicho rango, se disminuiría considerablemte
+    las muertes en cada corte mensual.
+
+    \paragraph{}
+    Tras realizar dicha transformación, la simulación partiendo de la misma cantidad de hombres y
+    mujeres expuesta anteriormente se logran los resultados siguientes:
+
+
+    \begin{table}[h!]
+        \begin{center}
+        \begin{tabular}{| c | c |}
+        \hline
+        \multicolumn{2}{ |c| }{10 000 H y 10 000 M} \\ \hline
+        Número de Meses & Población Actual \\ \hline
+        0  &  20 000 \\ \hline
+        12 (1 año) &  20 041 \\ \hline
+        60 (5 años) &  20 462 \\ \hline
+        120 (10 años) &  20 768 \\ \hline
+        300 (25 años) &  21 398 \\ \hline
+        600 (50 años) &  21 302 \\ \hline
+        960 (80 años) &  20 723 \\ \hline
+        1200 (100 años) &  19 167 \\ \hline
+        \end{tabular}
+        \end{center}
+    \end{table}
+
+
+
+    \newpage      
+    \section {Enlace al repositorio del proyecto en Github}
+        
+\end{document}  
